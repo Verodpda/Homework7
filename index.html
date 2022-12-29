@@ -11,8 +11,8 @@
 <body>
 	<div class="container">
 		<div class="app-body">
-			<form>
-				<input type="text" placeholder="Enter a city name">
+			<form id="city-search">
+				<input type="text" placeholder="Enter a city name" id="city-input">
 				<input type="submit" value="search" class="btn btn-primary">
 			</form>
 			<div class="row">
@@ -25,7 +25,7 @@
 					</h2>
 					<br>
 					<h3>
-						<div id="weather-description"> description</div>
+						<div id="weather-description" class="description-weather"> description</div>
 						 Humidity: <span id="humidity"></span>
 						 <br>
 						 Wind: <span id="wind"></span>
@@ -33,7 +33,7 @@
 				</div>
 				<div class="col-6">
 					<h2>
-						<img src="images/clear-day.svg" alt="sunny" srcset="" class="weather-image"> 
+						<div class="weather-image" > <img src="images/clear-day.svg" alt="sunny" srcset="" id="weather-image"> </div>
 						<br>
 						<div id="current-temp"> temperature</div>
 					</h2>
