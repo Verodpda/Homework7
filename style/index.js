@@ -15,7 +15,7 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
   function currentPosition (position){
       function displayCityWeather (response){
       let currentTemp = document.querySelector("#current-temp");
-      currentTemp.innerHTML = `${Math.round(response.data.main.temp_max)}/${Math.round(response.data.main.temp_min)} C°|F°`;
+      currentTemp.innerHTML = `${Math.round(response.data.main.temp_max)}/${Math.round(response.data.main.temp_min)} `;
 
       let currentHumidity = document.querySelector("#humidity");
       currentHumidity.innerHTML = `${response.data.main.humidity}%`;
@@ -29,8 +29,11 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
       let cityName = document.querySelector("h1");
       cityName.innerHTML = response.data.name;
 
+      celciousTempMax = Math.round(response.data.main.temp_max);
+      celciousTempMin = Math.round(response.data.main.temp_min);
+
       function weatherIconChange(){
-              let weatherType = response.data.weather[0].main;
+      let weatherType = response.data.weather[0].main;
       let weatherIcon = document.querySelector("#weather-image");
       if (weatherType === "Clouds") {
       weatherIcon.setAttribute("src", `images/cloudy.svg`);
@@ -62,8 +65,6 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
 
       }
       weatherIconChange();
-
-
   }
    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=70a117d10548a7cde81c5d73ab55d01b&units=metric`;
    axios.get(apiUrl).then(displayCityWeather)
@@ -80,7 +81,7 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
 
   function displayCityWeather (response){
       let currentTemp = document.querySelector("#current-temp");
-      currentTemp.innerHTML = `${Math.round(response.data.main.temp_max)}/${Math.round(response.data.main.temp_min)} C°|F°`;
+      currentTemp.innerHTML = `${Math.round(response.data.main.temp_max)}/${Math.round(response.data.main.temp_min)} `;
 
       let currentHumidity = document.querySelector("#humidity");
       currentHumidity.innerHTML = `${response.data.main.humidity}%`;
@@ -90,6 +91,9 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
 
       let weatherDescription = document.querySelector("#weather-description");
       weatherDescription.innerHTML = (response.data.weather[0].description);
+
+      celciousTempMax = Math.round(response.data.main.temp_max);
+      celciousTempMin = Math.round(response.data.main.temp_min);
 
       let weatherType = response.data.weather[0].main;
       let weatherIcon = document.querySelector("#weather-image");
@@ -127,3 +131,23 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
 
 let cityForm = document.querySelector("#city-search");
 cityForm.addEventListener("submit", citySubmit);
+
+//Unit convertion
+let celciousTempMax = null;
+let celciousTempMin = null;
+
+function celsClick (event){
+  event.preventDefault();
+  let currentTemp = document.querySelector("#current-temp");
+  currentTemp.innerHTML = (celciousTempMax + "/" + celciousTempMin);
+}
+let celsiusTemp = document.querySelector("#celcious-click");
+celsiusTemp.addEventListener("click", celsClick);
+
+function fahrClick(event){
+  event.preventDefault();
+  let currentTemp = document.querySelector("#current-temp");
+  currentTemp.innerHTML = (Math.round(celciousTempMax*9/5 + 32) + "/" + Math.round(celciousTempMin*9/5 + 32));
+}
+let fahrTemp = document.querySelector("#fahrenheit-click");
+fahrTemp.addEventListener("click", fahrClick)

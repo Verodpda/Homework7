@@ -1,3 +1,10 @@
+h3 {
+    font-size: 23px;
+}
+.temp-style{
+    font-size: 40px;
+    margin-left: 40px;
+}
 .app-body{
     border: 1px solid black;
     margin-top: 20px;
@@ -5,13 +12,18 @@
     padding: 20px;
     border-radius: 10px;
 }
-h3{
-    font-size: 23px;
-}
 .weather-image{
-    max-width: 200px;
+    max-width: 250px;
+    margin-top: -25px;
 }
 .description-weather{
     font-size: 25px;
     text-transform: capitalize;
+}
+.unit-measure{
+    font-size: 20px;
+    vertical-align: top;
+}
+.link-style{
+    text-decoration: none;
 }
