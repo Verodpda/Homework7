@@ -29,7 +29,8 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
       let cityName = document.querySelector("h1");
       cityName.innerHTML = response.data.name;
 
-      let weatherType = response.data.weather[0].main;
+      function weatherIconChange(){
+              let weatherType = response.data.weather[0].main;
       let weatherIcon = document.querySelector("#weather-image");
       if (weatherType === "Clouds") {
       weatherIcon.setAttribute("src", `images/cloudy.svg`);
@@ -58,6 +59,10 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
       if (weatherType === "Mist") {
         weatherIcon.setAttribute("src", `images/mist.svg`)
       }
+
+      }
+      weatherIconChange();
+
 
   }
    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=70a117d10548a7cde81c5d73ab55d01b&units=metric`;
@@ -115,7 +120,6 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
       if (weatherType === "Mist") {
         weatherIcon.setAttribute("src", `images/mist.svg`)
       }
-      console.log(response)
   }
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=70a117d10548a7cde81c5d73ab55d01b&units=metric`;
   axios.get(apiUrl).then(displayCityWeather)
