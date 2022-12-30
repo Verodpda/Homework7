@@ -29,9 +29,35 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
       let cityName = document.querySelector("h1");
       cityName.innerHTML = response.data.name;
 
-      let weatherIconURL = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
+      let weatherType = response.data.weather[0].main;
       let weatherIcon = document.querySelector("#weather-image");
+      if (weatherType === "Clouds") {
       weatherIcon.setAttribute("src", `images/cloudy.svg`);
+      }
+      else
+      if (weatherType === "Rain") {
+      weatherIcon.setAttribute("src", `images/rain.svg`);
+      }
+      else
+      if (weatherType === "Clear") {
+        weatherIcon.setAttribute("src", `images/clear-day.svg`)
+      }
+      else
+      if (weatherType === "Thunderstorm") {
+        weatherIcon.setAttribute("src", `images/thunderstorm.svg`)
+      }
+      else
+      if (weatherType === "Drizzle") {
+        weatherIcon.setAttribute("src", `images/drizzle.svg`)
+      }
+      else
+      if (weatherType === "Snow") {
+        weatherIcon.setAttribute("src", `images/snow.svg`)
+      }
+      else
+      if (weatherType === "Mist") {
+        weatherIcon.setAttribute("src", `images/mist.svg`)
+      }
 
   }
    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=70a117d10548a7cde81c5d73ab55d01b&units=metric`;
@@ -60,6 +86,36 @@ h2.innerHTML = `${day} ${hour}:0${minutes}`;
       let weatherDescription = document.querySelector("#weather-description");
       weatherDescription.innerHTML = (response.data.weather[0].description);
 
+      let weatherType = response.data.weather[0].main;
+      let weatherIcon = document.querySelector("#weather-image");
+      if (weatherType === "Clouds") {
+      weatherIcon.setAttribute("src", `images/cloudy.svg`);
+      }
+      else
+      if (weatherType === "Rain") {
+      weatherIcon.setAttribute("src", `images/rain.svg`);
+      }
+      else
+      if (weatherType === "Clear") {
+        weatherIcon.setAttribute("src", `images/clear-day.svg`)
+      }
+      else
+      if (weatherType === "Thunderstorm") {
+        weatherIcon.setAttribute("src", `images/thunderstorm.svg`)
+      }
+      else
+      if (weatherType === "Drizzle") {
+        weatherIcon.setAttribute("src", `images/drizzle.svg`)
+      }
+      else
+      if (weatherType === "Snow") {
+        weatherIcon.setAttribute("src", `images/snow.svg`)
+      }
+      else
+      if (weatherType === "Mist") {
+        weatherIcon.setAttribute("src", `images/mist.svg`)
+      }
+      console.log(response)
   }
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=70a117d10548a7cde81c5d73ab55d01b&units=metric`;
   axios.get(apiUrl).then(displayCityWeather)
